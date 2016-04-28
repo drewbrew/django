@@ -3,14 +3,16 @@ The form rendering API
 ======================
 
 Django form widgets are rendered using the Django template backend system.
-By default, if Jinja2 is installed, the Jinja2 backend is used. Otherwise,
-forms are rendered with the DjangoTemplates backend.
+By default, if Jinja2 is installed, the
+:class:`~django.template.backends.jinja2.Jinja2` backend is used. Otherwise,
+forms are rendered with the
+:class:`~django.template.backends.django.DjangoTemplates` backend.
 
 The form rendering process is customizable at multiple levels:
 
-* Widgets can specify custom template names
-* Forms and widgets can specify custom renderer classes
-* Built-in templates can be overridden within a project or application
+* Widgets can specify custom template names.
+* Forms and widgets can specify custom renderer classes.
+* Built-in templates can be overridden within a project or application.
 
 The low-level render API
 ------------------------
@@ -21,7 +23,7 @@ can provide a custom template for ``input.html`` by defining
 
 .. note::
 
-    While form rendering should work out of the box, to override templates
+    While form rendering should work out of the box, overriding templates
     in your project requires some configuration.
 
 .. module:: django.forms.renderers.templates
@@ -63,12 +65,10 @@ How rendering is configured
    uses ``Jinja2`` to be as fast as possible.
 
 Alternatively, a custom renderer can be specified by updating the
-``FORM_RENDERER`` setting. This value defaults to:
+:setting:`FORM_RENDERER` setting. It defaults to
+``'django.forms.renderers.templates.TemplateRenderer'``.
 
-``django.forms.renderers.templates.TemplateRenderer``
-
-If you want to use a custom engine altogether, you could create a custom
-subclass like::
+If you want to use a custom engine, you could create a custom subclass like::
 
     from django.utils.functional import cached_property
 
@@ -96,11 +96,11 @@ a context from ``Widget.get_context()``. By default, widgets receive a single
 value in the context, ``widget``. This is a dictionary that contains values
 like:
 
-``name``
-``value``
-``attrs``
-``is_hidden``
-``template_name``
+* ``name``
+* ``value``
+* ``attrs``
+* ``is_hidden``
+* ``template_name``
 
 Some widgets add further information to the context. For instance, all widgets
 that subclass ``Input`` define ``widget['type']``, whereas ``MultiWidgets``

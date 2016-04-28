@@ -165,6 +165,9 @@ details on these changes.
 
 * Support for ``Widget._format_value()`` will be removed.
 
+* Support for ``Widget.render()`` methods without the ``renderer`` argument
+  will be removed.
+
 .. _deprecation-removed-in-1.10:
 
 1.10

@@ -116,7 +116,7 @@ class BoundField(object):
         else:
             warnings.warn(
                 'Backwards compatibility for widgets without support for the '
-                '`renderer` argument in Widget.render() will be removed in'
+                '`renderer` argument in Widget.render() will be removed in '
                 'Django 2.0',
                 RemovedInDjango20Warning, stacklevel=2,
             )
