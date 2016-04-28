@@ -2,17 +2,21 @@
 The form rendering API
 ======================
 
+.. versionadded:: 1.10
+
 Django form widgets are rendered using the Django template backend system.
 By default, if Jinja2 is installed, the
 :class:`~django.template.backends.jinja2.Jinja2` backend is used. Otherwise,
 forms are rendered with the
 :class:`~django.template.backends.django.DjangoTemplates` backend.
 
-The form rendering process is customizable at multiple levels:
+The form rendering process can be customized at several levels:
 
 * Widgets can specify custom template names.
 * Forms and widgets can specify custom renderer classes.
 * Built-in templates can be overridden within a project or application.
+
+.. _low-level-widget-render-api:
 
 The low-level render API
 ------------------------

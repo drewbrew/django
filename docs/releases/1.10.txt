@@ -36,7 +36,11 @@ configurations and weightings, and rank the results by relevance.
 Template-based widget rendering
 -------------------------------
 
-...
+To ease customizing widgets, form widget rendering is now done using the
+template system rather than in Python. See :doc:`/ref/forms/renderers`.
+
+You may need to adjust any custom widgets that you've written for a few
+:ref:`backwards incompatible changes <template-widget-incompatibilities-1-10>`.
 
 Minor features
 --------------
@@ -692,14 +696,20 @@ You can check if your database has any of the removed hashers like this::
   ``POINT (23.0000000000000000 5.5000000000000000)``, you'll get
   ``POINT (23 5.5)``.
 
+.. _template-widget-incompatibilities-1-10:
+
 Changes due to the introduction of template-based widget rendering
 ------------------------------------------------------------------
 
 Some undocumented classes in ``django.forms.widgets`` are removed:
 
 * ``SubWidget``
-* ``ChoiceFieldRenderer``, ``RadioFieldRenderer``, ``CheckboxFieldRenderer``
+* ``RendererMixin``, ``ChoiceFieldRenderer``, ``RadioFieldRenderer``,
+  ``CheckboxFieldRenderer``
 * ``ChoiceInput``, ``RadioChoiceInput``, ``CheckboxChoiceInput``
+
+The ``Widget.format_output()`` method is removed. Use a custom widget template
+instead.
 
 Miscellaneous
 -------------
