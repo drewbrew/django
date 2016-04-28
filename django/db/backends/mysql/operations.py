@@ -132,7 +132,7 @@ class DatabaseOperations(BaseDatabaseOperations):
 
     def validate_autopk_value(self, value):
         # MySQLism: zero in AUTO_INCREMENT field does not work. Refs #17653.
-        if value == 0:
+        if value == 0 and not self.connection.features.allows_auto_pk_0:
             raise ValueError('The database backend does not accept 0 as a '
                              'value for AutoField.')
         return value
