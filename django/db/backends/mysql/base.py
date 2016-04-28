@@ -261,6 +261,10 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         return kwargs
 
     def get_new_connection(self, conn_params):
+        try:
+            conn_params.pop('ALLOWS_AUTO_PK_0')
+        except KeyError:
+            pass
         conn = Database.connect(**conn_params)
         conn.encoders[SafeText] = conn.encoders[six.text_type]
         conn.encoders[SafeBytes] = conn.encoders[bytes]

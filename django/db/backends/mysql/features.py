@@ -33,6 +33,10 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     supports_column_check_constraints = False
     can_clone_databases = True
 
+    def __init__(self, connection):
+        super(DatabaseFeatures, self).__init__(connection)
+        self.allows_auto_pk_0 = self.connection.settings_dict['OPTIONS'].get('ALLOWS_AUTO_PK_0', False)
+
     @cached_property
     def _mysql_storage_engine(self):
         "Internal method used in Django tests. Don't rely on this from your code"
