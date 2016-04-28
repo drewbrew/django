@@ -436,12 +436,10 @@ class ClearableFileInput(FileInput):
 
 class Textarea(Widget):
     template_name = 'django/forms/widgets/textarea.html'
-    rows = 10
-    cols = 40
 
     def __init__(self, attrs=None):
         # Use slightly better defaults than HTML's 20x2 box
-        default_attrs = {'cols': self.cols, 'rows': self.rows}
+        default_attrs = {'cols': '40', 'rows': '10'}
         if attrs:
             default_attrs.update(attrs)
         super(Textarea, self).__init__(default_attrs)
