@@ -81,3 +81,16 @@ class UniqueTogether(models.Model):
             ('from_field', 'field1'),
             ('non_unique', 'non_unique_0'),
         ]
+
+
+class Indexes(models.Model):
+    field1 = models.IntegerField()
+    field2 = models.CharField(max_length=5)
+    from_field = models.IntegerField(unique=True, db_column='from')
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['field1', 'field2'], name='my_index'),
+            models.Index(fields=['field2', 'from_field'], name='my_other_index'),
+            models.Index(fields=['from_field']),
+        ]
