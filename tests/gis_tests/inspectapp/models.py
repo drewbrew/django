@@ -29,5 +29,5 @@ class Indexes(models.Model):
     class Meta:
         required_db_features = ['gis_enabled']
         indexes = [
-            models.Index(fields=['name', 'other'], name='my_index')
+            models.Index(fields=['name', 'other'], name='name_plus_other')
         ]
