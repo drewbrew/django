@@ -116,6 +116,8 @@ Minor features
 * Added the :class:`~django.contrib.gis.db.models.functions.AsWKB` and
   :class:`~django.contrib.gis.db.models.functions.AsWKT` functions.
 
+* Added support for PostGIS 3.
+
 :mod:`django.contrib.humanize`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -311,6 +313,13 @@ Management Commands
 * The new :option:`migrate --check` option makes the command exit with a
   non-zero status when unapplied migrations are detected.
 
+* The new ``returncode`` argument for
+  :attr:`~django.core.management.CommandError` allows customizing the exit
+  status for management commands.
+
+* The new :option:`dbshell -- ARGUMENTS <dbshell -->` option allows passing
+  extra arguments to the command-line client for the database.
+
 Migrations
 ~~~~~~~~~~
 
@@ -499,6 +508,9 @@ backends.
   yields a cursor and automatically closes the cursor and connection upon
   exiting the ``with`` statement.
 
+* ``DatabaseClient.runshell()`` now requires an additional ``parameters``
+  argument as a list of extra arguments to pass on to the command-line client.
+
 Dropped support for MariaDB 10.1
 --------------------------------
 
@@ -628,6 +640,9 @@ Miscellaneous
 * The :func:`~django.contrib.auth.hashers.make_password` now requires its
   argument to be a string or bytes. Other types should be explicitly cast to
   one of these.
+
+* The undocumented ``version`` parameter to the
+  :class:`~django.contrib.gis.db.models.functions.AsKML` function is removed.
 
 .. _deprecated-features-3.1:
 
