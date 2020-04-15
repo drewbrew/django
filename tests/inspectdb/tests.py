@@ -5,7 +5,9 @@ from unittest import mock, skipUnless
 from django.core.management import call_command
 from django.db import connection
 from django.db.backends.base.introspection import TableInfo
-from django.test import TestCase, TransactionTestCase, skipUnlessDBFeature, skipIfDBFeature
+from django.test import (
+    TestCase, TransactionTestCase, skipUnlessDBFeature, skipIfDBFeature
+)
 
 from .models import PeopleMoreData
 
