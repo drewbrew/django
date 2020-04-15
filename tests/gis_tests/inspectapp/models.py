@@ -19,3 +19,15 @@ class Fields3D(models.Model):
     pointg = models.PointField(dim=3, geography=True)
     line = models.LineStringField(dim=3)
     poly = models.PolygonField(dim=3)
+
+
+class Indexes(models.Model):
+    point = models.PointField(db_index=True)
+    name = models.CharField(max_length=5)
+    other = models.IntegerField()
+
+    class Meta:
+        required_db_features = ['gis_enabled']
+        indexes = [
+            models.Index(fields=['name', 'other'], name='my_index')
+        ]
